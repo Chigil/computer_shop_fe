@@ -1,0 +1,42 @@
+<mat-drawer-container class='container' autosize>
+  <mat-drawer #drawer class='example-sidenav' mode='side'>
+    <app-side-nav></app-side-nav>
+  </mat-drawer>
+
+  <div class='example-sidenav-content'>
+    <router-outlet></router-outlet>
+    center view toolbar
+    <mat-toolbar color='primary'>
+      <mat-toolbar-row>
+        <button type='button' mat-button (click)='drawer.toggle()'>
+          Toggle sidenav
+        </button>
+        <span class='example-spacer'></span>
+        <div class='example-button-container'>
+          <button mat-mini-fab color='dark' aria-label='Example icon button with a plus one icon'>
+            <mat-icon>account_box</mat-icon>
+          </button>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card class='example-card'>
+      <mat-card-header>
+        <mat-card-title>Видеокарта Gigabyte GeForce RTX 3050</mat-card-title>
+        <mat-card-subtitle>Gaming OC 8G GV-N3050GAMING OC-8GD</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src='https://avatars.mds.yandex.net/get-mpic/5209894/img_id367893927648430401.png/600x600' alt='Photo of a Shiba Inu'>
+      <mat-card-content>
+        <p>
+          NVIDIA GeForce RTX 3050 8 ГБ GDDR6 LHR, базовая частота 1550 МГц, 2560sp, частота памяти 14000 МГц, 128 бит, доп. питание: 8 pin, 2 слота, HDMI, DisplayPort
+        </p>
+        <h2>1608р</h2>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary">Add</button>
+        <button mat-button>More info</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+
+</mat-drawer-container>
