@@ -14,13 +14,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { MainContentSmartComponent } from './main-content/main-content-smart.component';
+import { FormlyModule } from '@ngx-formly/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainContentPresentationComponent,
     MainContentSmartComponent,
-    SideNavComponent
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,10 @@ import { MainContentSmartComponent } from './main-content/main-content-smart.com
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
+    FormlyModule.forRoot(),
+    ReactiveFormsModule,
+    FormlyMaterialModule,
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
