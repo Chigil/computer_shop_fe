@@ -17,7 +17,10 @@ export class ProductService {
   }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwiaWQiOiJjZDRlNmIzYi1kZDYwLTQ0NmMtODBhMC0zZTFlYWY2YTk2NTciLCJyb2xlIjp7ImlkIjoiZWM1N2NmOTEtNWVhNy00Yjg0LWE5YTItMmQzZGM4YjU5ZThmIiwiaWRlbnQiOiJDTElFTlQiLCJjcmVhdGVkQXQiOiIyMDIyLTA1LTEwVDA4OjA4OjQ5LjA0N1oiLCJ1cGRhdGVkQXQiOiIyMDIyLTA1LTEwVDA4OjA4OjQ5LjA0N1oifSwiaWF0IjoxNjU0NTk2OTIyLCJleHAiOjE2NTQ2ODMzMjJ9.-ns5t0K6S71hzVu1_40Y7-alnvCjWiMjJJjsTmJE5Pk'  },
+      ),
   };
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -32,19 +35,20 @@ export class ProductService {
     this.messageService.add(`HeroService: ${message}`);
   }
 
-  private heroesUrl = '/product';
+  private heroesUrl = 'http://localhost:5000/product';
 
-  getHeroes(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.heroesUrl)
+  getProducts(): Observable<Product[]> {
+    const url = `${this.heroesUrl}/all`;
+    return this.http.post<Product[]>(url,{}, this.httpOptions)
       .pipe(
         tap(_ => this.log('fetched products')),
         catchError(this.handleError<Product[]>('getHeroes', [])),
       );
   }
 
-  getHero(id: number): Observable<Product> {
+  getProduct(id: string): Observable<Product> {
     const url = `${this.heroesUrl}/${id}`;
-    return this.http.get<Product>(url).pipe(
+    return this.http.get<Product>(url,this.httpOptions).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
       catchError(this.handleError<Product>(`getHero id=${id}`)),
     );

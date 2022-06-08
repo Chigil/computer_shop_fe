@@ -5,17 +5,22 @@ import { FormsModule } from '@angular/forms';
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    MatCardModule,
+  ],
+  exports: [
+    ProductDetailComponent,
   ],
   declarations: [
     ProductListComponent,
-    ProductDetailComponent
-  ]
+    ProductDetailComponent,
+  ],
 })
 export class ProductsModule {}
